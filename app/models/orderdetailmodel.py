@@ -5,3 +5,6 @@ class OrderDetails(db.Document):
 	itemname = db.StringField(required=True)
 	pickupaddress = db.StringField(required=True)
 	ordereduser = db.ReferenceField(User)
+	statusoforder = db.StringField()
+	itemtakenby = db.StringField()
+	 
