@@ -7,4 +7,4 @@ class OrderDetails(db.Document):
 	ordereduser = db.ReferenceField(User)
 	statusoforder = db.StringField()
 	itemtakenby = db.StringField()
-	 
+	locationofagent =  db.StringField() 
