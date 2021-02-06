@@ -8,4 +8,5 @@ app.config["MONGODB_SETTINGS"] = {
 	"port":27017
 }
 app.secret_key = b'_5#y2L"Fjnmb\n\xec]/'
+db =  MongoEngine(app)
 api = Api(app)
