@@ -5,7 +5,7 @@ class OrderDetails(db.Document):
 	itemname = db.StringField(required=True)
 	pickupaddress = db.StringField(required=True)
 	ordereduser = db.ReferenceField(User)
-	statusoforder = db.StringField()
+	statusoforder = db.StringField(default="Pending Pickup")
 	deliveryusername = db.StringField()
 	locationofagent =  db.StringField()
 	deliveryuserphoneno = db.StringField()
