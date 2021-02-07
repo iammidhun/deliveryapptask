@@ -1,3 +1,4 @@
+import uuid
 from flask import jsonify,request,render_template,redirect, url_for
 from flask_login import current_user
 from app.models.usermodel import User
@@ -14,6 +15,10 @@ def orderitem():
 			deliveryaddresslist.append(deliveryaddress)
 			user.deliveryaddress = deliveryaddresslist
 			user.save()
-		
+		uniqueuid = uuid.uuid4().hex
+		OrderDetails.objects.create(itemname=itemname,
+			pickupaddress=pickupaddress,deliveryaddress=deliveryaddress,
+			ordereduser = current_user.id,orderid=uniqueuid)
+		return("success")
 	
 
