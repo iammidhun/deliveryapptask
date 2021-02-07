@@ -20,7 +20,7 @@ def userregister():
 		username = request.form["username"]
 		userpassword = request.form["userpassword"]
 		usermailid = request.form["usermailid"]
-		userrole = request.form["userrole"]
+		userrole = request.form["name"]
 		deliveryaddress = request.form["deliveryaddress"]
 		deliveryaddresslist = []
 		deliveryaddresslist.append(deliveryaddress)
