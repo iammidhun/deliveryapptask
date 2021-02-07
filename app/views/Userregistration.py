@@ -1,4 +1,5 @@
 #for user signup
+import json
 from app.app import login_manager
 from app.models.usermodel import User
 from flask_restful import Resource
@@ -21,11 +22,13 @@ def userregister():
 		usermailid = request.form["usermailid"]
 		userrole = request.form["userrole"]
 		deliveryaddress = request.form["deliveryaddress"]
+		deliveryaddresslist = []
+		deliveryaddresslist.append(deliveryaddress)
 		userphoneno = request.form["userphoneno"]
 		print(request.form)
 		User.objects.create(username=username,userpassword=userpassword,
 			usermailid=usermailid,userrole=userrole,
-			deliveryaddress=deliveryaddress,userphoneno=userphoneno)
+			deliveryaddress=deliveryaddresslist,userphoneno=userphoneno)
 		return redirect(url_for('userlogin'))
 	else:
 		return render_template('register.html')
