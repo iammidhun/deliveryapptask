@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Delivery Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Please Register</h1>
+      <br>
+      <form action="/register" method="post">
+        <input type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}">
+        <input type="password" placeholder="userpassword" name="userpassword" value="{{
+          request.form.userpassword }}">
+        <input type="text" placeholder="usermailid" name="usermailid" value="{{
+          request.form.usermailid }}">
+        <input type="text" placeholder="userrole" name="userrole" value="{{
+          request.form.userrole }}">
+        <input type="text" placeholder="deliveryaddress" name="deliveryaddress" value="{{
+          request.form.deliveryaddress }}">
+        <input type="text" placeholder="userphoneno" name="userphoneno" value="{{
+          request.form.userphoneno }}">
+        <input class="btn btn-default" type="submit" value="Login">
+      </form>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+  </body>
+</html>
