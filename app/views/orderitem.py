@@ -33,17 +33,23 @@ def orderitem():
 
 def orderupdate():
 	if request.method=='POST':
-		orderid = request.form["orderid"]
-		statusoforder = request.form["statusoforder"]
-		deliveryusername = request.form["deliveryusername"]
-		locationofagent = request.form["locationofagent"]
-		deliveryuserphoneno = request.form["deliveryuserphoneno"]
-		order = OrderDetails.objects.get(orderid=orderid)
-		order.statusoforder = statusoforder
-		order.deliveryusername = deliveryusername
-		order.locationofagent = locationofagent
-		order.deliveryuserphoneno = deliveryuserphoneno
-		order.save()
-		return render_template("deliveryupdate.html")
+		if (current_user.userrole=="deliveryuser"):		
+			orderid = request.form["orderid"]
+			statusoforder = request.form["statusoforder"]
+			deliveryusername = request.form["deliveryusername"]
+			locationofagent = request.form["locationofagent"]
+			deliveryuserphoneno = request.form["deliveryuserphoneno"]
+			order = OrderDetails.objects.get(orderid=orderid)
+			order.statusoforder = statusoforder
+			order.deliveryusername = deliveryusername
+			order.locationofagent = locationofagent
+			order.deliveryuserphoneno = deliveryuserphoneno
+			order.save()
+			return render_template("deliveryupdate.html")
+		else:
+			return render_template("login.html")
 	else:
-		return render_template("deliveryupdate.html")
+		if (current_user.userrole=="deliveryuser"):	
+			return render_template("deliveryupdate.html")
+		else:
+			return render_template("login.html")
