@@ -22,11 +22,12 @@ def orderitem():
 		OrderDetails.objects.create(itemname=itemname,
 			pickupaddress=pickupaddress,deliveryaddress=deliveryaddress,
 			ordereduser = current_user.id,orderid=uniqueuid)
-		return("success")
+		user =  User.objects.get(id=current_user.id)
+		orderitems = OrderDetails.objects(ordereduser=current_user.id)
+		return render_template("order.html",user=user,orderitems=orderitems)
 	else:
 		user =  User.objects.get(id=current_user.id)
 		orderitems = OrderDetails.objects(ordereduser=current_user.id)
-		print(len(orderitems))
 		return render_template("order.html",user=user,orderitems=orderitems)
 	
 
