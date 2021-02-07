@@ -5,7 +5,7 @@ from flask import jsonify,request,render_template
 def userlogin():
 	return render_template('login.html')
 
-def useregister():
+def userregister():
 	username = request.form["username"]
 	userpassword = request.form["userpassword"]
 	usermailid = request.form["usermailid"]
