@@ -12,3 +12,7 @@ def useregister():
 	userrole = request.form["userrole"]
 	deliveryaddress = request.form["deliveryaddress"]
 	userphoneno = request.form["userphoneno"]
+	User.objects.create(username=username,userpassword=userpassword
+		usermailid=usermailid,userrole=userrole,
+		deliveryaddress=deliveryaddress,userphoneno=userphoneno)
+	return ("success")
