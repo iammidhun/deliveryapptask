@@ -7,6 +7,7 @@ from app.views.orderitem import orderitem
 from flask import jsonify,request,flash,render_template,redirect, url_for
 from flask_login import current_user,LoginManager,login_required,login_user,logout_user
 def userlogin():
+	#user login
 	if request.method == 'POST':
 		user = User.objects.get(usermailid=request.form["usermailid"])
 		if (user.userpassword==request.form["password"]):
@@ -18,6 +19,7 @@ def userlogin():
 	return render_template('login.html')
 
 def userregister():
+	#user register
 	if request.method == 'POST':
 		username = request.form["username"]
 		userpassword = request.form["userpassword"]

@@ -4,6 +4,7 @@ from flask_login import current_user
 from app.models.usermodel import User
 from app.models.orderdetailmodel import OrderDetails
 def orderitem():
+	#function for ordering item
 	if request.method == 'POST':
 		itemname = request.form["itemname"]
 		pickupaddress = request.form["pickupaddress"]
@@ -32,6 +33,7 @@ def orderitem():
 	
 
 def orderupdate():
+	#function for order update by delivery user 
 	if request.method=='POST':
 		if (current_user.userrole=="deliveryuser"):		
 			orderid = request.form["orderid"]
