@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_mongoengine import MongoEngine
 from flask_restful import  Api
-app = Flask(__name__)
+app = Flask(__name__,template_folder='../templates')
 app.config["MONGODB_SETTINGS"] = {
 	"db":"deliveryapp",
 	"host":"localhost",
