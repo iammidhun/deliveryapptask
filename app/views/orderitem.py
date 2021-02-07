@@ -7,18 +7,25 @@ def orderitem():
 	if request.method == 'POST':
 		itemname = request.form["itemname"]
 		pickupaddress = request.form["pickupaddress"]
-		deliveryaddresstype = request.form["pickupaddress"]
-		deliveryaddress = request.form["deliveryaddress"]
-		if  deliveryaddresstype == "new":
+		newaddress = request.form["newaddress"]
+		deliveryaddress = request.form.get("deliveryaddress")
+		if  newaddress:
 			user =  User.objects.get(id=current_user.id)
 			deliveryaddresslist = user.deliveryaddress
-			deliveryaddresslist.append(deliveryaddress)
+			deliveryaddresslist.append(newaddress)
 			user.deliveryaddress = deliveryaddresslist
 			user.save()
+			deliveryaddress = newaddress
+		else:
+			deliveryaddress=deliveryaddress
 		uniqueuid = uuid.uuid4().hex
 		OrderDetails.objects.create(itemname=itemname,
 			pickupaddress=pickupaddress,deliveryaddress=deliveryaddress,
 			ordereduser = current_user.id,orderid=uniqueuid)
 		return("success")
+	else:
+		user =  User.objects.get(id=current_user.id)
+		orderitems = OrderDetails.objects.get(ordereduser=current_user.id)
+		return render_template("order.html",user=user,orderitems=orderitems)
 	
 
