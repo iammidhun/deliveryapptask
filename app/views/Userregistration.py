@@ -29,4 +29,6 @@ def userregister():
 		return redirect(url_for('userlogin'))
 	else:
 		return render_template('register.html')
-def logout()
+def logout():
+	logout_user()
+	return redirect(url_for('userlogin'))
