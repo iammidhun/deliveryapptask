@@ -3,10 +3,10 @@ from app.app import db
 
 class User(db.Document):
 	username = db.StringField(required=True)
-	usermailid = db.StringField(required=True)
+	usermailid = db.StringField(required=True,unique=True)
 	userrole = db.StringField(required=True)
 	userpassword = db.StringField(required=True)
-	deliveryaddress = db.StringField()
+	deliveryaddress = db.ListField()
 	userphoneno = db.StringField(required=True)
 
 	def is_authenticated(self):
