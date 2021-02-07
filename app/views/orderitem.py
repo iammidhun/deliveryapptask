@@ -25,7 +25,8 @@ def orderitem():
 		return("success")
 	else:
 		user =  User.objects.get(id=current_user.id)
-		orderitems = OrderDetails.objects.get(ordereduser=current_user.id)
+		orderitems = OrderDetails.objects(ordereduser=current_user.id)
+		print(len(orderitems))
 		return render_template("order.html",user=user,orderitems=orderitems)
 	
 

@@ -7,6 +7,29 @@
   <body style="background-color:powderblue;">
     <div class="container">
       <br>
+      <table style=" background-repeat:no-repeat; width:850px;margin:0;" cellpadding="0" cellspacing="0" border=black>
+        <th class="name-row">Item name</th>
+        <th class="name-row">Pickup Address</th>
+        <th class="name-row">Delivery Address</th>
+        <th class="name-row">Status of order</th>
+        <th class="name-row">Delivery User/th>
+        <th class="name-row">location of Agent</th>
+        <th class="name-row">Delivery User Phoneno</th>
+         
+        <tbody style="font-weight: normal;font-family:Arial;color:#273746">
+        {% for item in orderitems %}
+        <tr>
+          <td class="name-row">{{item.itemname}}</td>
+          <td class="name-row">{{item.pickupaddress}}</td>
+          <td class="name-row">{{item.deliveryaddress}}</td>
+          <td class="name-row">{{item.statusoforder}}</td>
+          <td class="name-row">{{item.deliveryusername}}</td>
+          <td class="name-row">{{item.locationofagent}}</td>
+          <td class="name-row">{{item.deliveryuserphoneno}}</td>
+        </tbody>
+        </tr>
+        {% endfor %}
+      </table>
       <div class="login-box" style="position:relative;left:490px;top:100px;">
         <div class="login-logo">
             <b>
