@@ -31,3 +31,19 @@ def orderitem():
 		return render_template("order.html",user=user,orderitems=orderitems)
 	
 
+def orderupdate():
+	if request.method=='POST':
+		orderid = request.form["orderid"]
+		statusoforder = request.form["statusoforder"]
+		deliveryusername = request.form["deliveryusername"]
+		locationofagent = request.form["locationofagent"]
+		deliveryuserphoneno = request.form["deliveryuserphoneno"]
+		order = OrderDetails.objects.get(orderid=orderid)
+		order.statusoforder = statusoforder
+		order.deliveryusername = deliveryusername
+		order.locationofagent = locationofagent
+		order.deliveryuserphoneno = deliveryuserphoneno
+		order.save()
+		return render_template("deliveryupdate.html")
+	else:
+		return render_template("deliveryupdate.html")
