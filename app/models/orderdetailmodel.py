@@ -10,3 +10,4 @@ class OrderDetails(db.Document):
 	locationofagent =  db.StringField()
 	deliveryuserphoneno = db.StringField()
 	orderid = db.StringField(required=True)
+	deliveryaddress = db.StringField(required=True)
