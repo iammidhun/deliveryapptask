@@ -10,6 +10,7 @@ def orderitem():
 		pickupaddress = request.form["pickupaddress"]
 		newaddress = request.form["newaddress"]
 		deliveryaddress = request.form.get("deliveryaddress")
+		print(deliveryaddress)
 		if  newaddress:
 			user =  User.objects.get(id=current_user.id)
 			deliveryaddresslist = user.deliveryaddress
